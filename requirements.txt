@@ -5,3 +5,9 @@ langchain-google-genai
 langchain-groq
 langgraph
 python-dotenv
+chromadb
+ipykernel
+langchain-huggingface 
+sentence-transformers
+unstructured 
+markdown

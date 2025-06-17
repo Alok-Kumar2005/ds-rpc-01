@@ -1,0 +1,5 @@
+gemini_model = "gemini-1.5-flash"
+groq_model = "deepseek-r1-distill-llama-70b"
+groq_stt = "whisper-large-v3"
+embeddings_model = "models/gemini-embedding-exp-03-07"
+huggingface_embeddings_model = "sentence-transformers/all-MiniLM-L6-v2"
