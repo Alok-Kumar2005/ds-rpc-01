@@ -1,6 +1,7 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List, Any
 from logger import logging
+from llm_config import chunk_overlap, chunk_size
 
 import sys
 import os
@@ -12,7 +13,7 @@ sys.path.append(str(app_dir))
 from exception import CustomException
 
 class TextSplitter:
-    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200):
+    def __init__(self, chunk_size: int = chunk_size, chunk_overlap: int = chunk_overlap):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.text_splitter = RecursiveCharacterTextSplitter(
