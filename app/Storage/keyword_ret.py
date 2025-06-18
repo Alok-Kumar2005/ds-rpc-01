@@ -3,8 +3,6 @@ import os
 import pickle
 from pathlib import Path
 from typing import Dict, List, Optional
-
-# Add the app directory to Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 from langchain.retrievers import BM25Retriever, EnsembleRetriever
