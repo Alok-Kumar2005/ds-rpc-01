@@ -10,16 +10,18 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')
 from langchain.retrievers import BM25Retriever, EnsembleRetriever
 from app.dataloader.splitter import TextSplitter
 from app.dataloader.dataload import DataLoader
+from app.llm_config import no_k
 from app.logger import logging
 
 
 class KeywordRetrieverManager:
     """Manages creation and storage of BM25 keyword retrievers for different departments."""
     
-    def __init__(self, base_resources_path="resources/data", retrievers_storage_path="retrievers"):
+    def __init__(self, base_resources_path="resources/data", retrievers_storage_path="retrievers", top_k: int = no_k):
         self.base_path = Path(base_resources_path)
         self.storage_path = Path(retrievers_storage_path)
         self.storage_path.mkdir(exist_ok=True)
+        self.top_k = top_k
         
         self.data_loader = None
         self.text_splitter = TextSplitter()
@@ -35,42 +37,42 @@ class KeywordRetrieverManager:
                 "file_path": self.base_path / "engineering" / "engineering_master_doc.md",
                 "retriever_name": "eng_keyword",
                 "type": "markdown",
-                "k": 2
+                "k": self.top_k
             },
             {
                 "name": "Finance Summary",
                 "file_path": self.base_path / "finance" / "financial_summary.md",
                 "retriever_name": "fin_summary_keyword",
                 "type": "markdown",
-                "k": 2
+                "k": self.top_k
             },
             {
                 "name": "Quarterly Financial Report",
                 "file_path": self.base_path / "finance" / "quarterly_financial_report.md",
                 "retriever_name": "fin_quarterly_keyword",
                 "type": "markdown",
-                "k": 2
+                "k": self.top_k
             },
             {
                 "name": "Employee Handbook",
                 "file_path": self.base_path / "general" / "employee_handbook.md",
                 "retriever_name": "general_keyword",
                 "type": "markdown",
-                "k": 2
+                "k": self.top_k
             },
             {
                 "name": "HR Data",
                 "file_path": self.base_path / "hr" / "hr_data.csv",
                 "retriever_name": "hr_keyword",
                 "type": "csv",
-                "k": 2
+                "k": self.top_k
             },
             {
                 "name": "Marketing Report",
                 "file_path": self.base_path / "marketing" / "market_report_q4_2024.md",
                 "retriever_name": "marketing_keyword",
                 "type": "markdown",
-                "k": 2
+                "k": self.top_k
             }
         ]
     

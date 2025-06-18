@@ -12,3 +12,5 @@ huggingface_embeddings_model = "sentence-transformers/all-MiniLM-L6-v2"
 chunk_size = 1000
 chunk_overlap = 200
 no_k = 2
+vector_weight = 0.7
+keyword_weight = 0.3
