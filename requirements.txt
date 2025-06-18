@@ -10,4 +10,5 @@ ipykernel
 langchain-huggingface 
 sentence-transformers
 unstructured 
-markdown
+rank_bm25
+cohere

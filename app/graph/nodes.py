@@ -8,7 +8,7 @@ from state import AgentState
 from utils.prompt import router_template
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
-from llm_config import gemini_model  # Now this should work
+from llm_config import gemini_model 
 from dotenv import load_dotenv
 
 load_dotenv()

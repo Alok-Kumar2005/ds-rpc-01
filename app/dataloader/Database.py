@@ -1,6 +1,6 @@
-# from dataloader import DataLoader, TextSplitter
-from dataload import DataLoader
-from splitter import TextSplitter
+from dataloader import DataLoader, TextSplitter
+# from dataload import DataLoader
+# from splitter import TextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
@@ -112,13 +112,13 @@ class VectorDB:
     
 
 if __name__ == "__main__":
-    file_path = "resources\data\hr\hr_data.csv"
-    vector_db = VectorDB(file_path)
+    file_path = r"resources\data\engineering\engineering_master_doc.md"
+    vector_db = VectorDB(file_path, "db")
     db = vector_db.create_vector_db()
     print("Vector database created successfully.")
     
     # Example usage
-    query = "Give a detail company overview?"
+    query = "What is  Data Layer"
     print("="* 50)
     results = vector_db.similarity_search(query)
     print("Search results:", results)

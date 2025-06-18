@@ -12,3 +12,11 @@ wheels/
 *.lock
 resources/vectorstore
 .env
+
+eng_db/
+fin_db1/
+fin_db2/
+gen_db/
+hr_db_csv/
+logs/
+mark_db/
