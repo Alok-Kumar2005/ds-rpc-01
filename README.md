@@ -35,4 +35,10 @@ streamlit run frontend.py   ( run frontend )
 
 # Images
 ### Backend image
-<img src="images/frontend.png" alt="My Image" width="300"/>
+<img src="images/backend.png" alt="My Image" width="600"/>
+
+### Frontend login
+<img src="images/frontend_login.png" alt="My Image" width="600"/>
+
+### Frontend 
+<img src="images/frontend.png" alt="My Image" width="600"/>
