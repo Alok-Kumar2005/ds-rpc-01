@@ -12,5 +12,6 @@ sentence-transformers
 unstructured 
 rank_bm25
 cohere
-pyttsx3
-elevenlabs
+fastapi
+uvicorn
+streamlit

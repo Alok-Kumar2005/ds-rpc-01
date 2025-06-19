@@ -1,11 +1,10 @@
-
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from model import Router
-from state import AgentState
-from utils.prompt import router_template, engineering_prompt, finance_prompt, general_prompt, hr_prompt, marketing_prompt
+from graph.model import Router
+from graph.state import AgentState
+from graph.utils.prompt import router_template, engineering_prompt, finance_prompt, general_prompt, hr_prompt, marketing_prompt
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser

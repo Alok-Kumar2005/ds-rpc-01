@@ -1,7 +1,8 @@
-from state import AgentState
-from nodes import route_node, EngineeringNode, FinanceNode, MarketingNode, HRNode, GeneralNode
+
+from graph.state import AgentState
+from graph.nodes import route_node, EngineeringNode, FinanceNode, MarketingNode, HRNode, GeneralNode
 from langgraph.graph import END, START, StateGraph
-from edges import select_workflow
+from graph.edges import select_workflow
 
 
 
@@ -29,14 +30,14 @@ def create_workflow():
 
     return graph_builder
 
-graph = create_workflow().compile()
+Graph = create_workflow().compile()
 
 # Test state
-test_state = {
-    "user_question": "What is microservices in Engineering",
-    "voice": "",
-    "post": "",
-    "response": ""
-}
+# test_state = {
+#     "user_question": "What is microservices in Engineering",
+#     "voice": "",
+#     "post": "",
+#     "response": ""
+# }
 
-print(graph.invoke(test_state))
+# print(Graph.invoke(test_state))
