@@ -71,27 +71,6 @@ def create_finance_summary_reranker():
         return None
 
 
-def create_finance_quarterly_reranker():
-    """Create reranker for Quarterly Financial Report."""
-    try:
-        logging.info("Creating Quarterly Financial reranker...")
-        vector_db = VectorDB(str(base_path / "finance" / "quarterly_financial_report.md"), "fin_db2")
-        vector_retriever = vector_db.load_existing_db().as_retriever(search_kwargs={"k": no_k})
-        keyword_retriever = keyword_manager.get_retriever("fin_quarterly_keyword")
-        ensemble = EnsembleRetriever(
-            retrievers=[vector_retriever, keyword_retriever],
-            weights=[vector_weight, keyword_weight]
-        )
-        finance_quarterly_reranker = ContextualCompressionRetriever(
-            base_compressor=reranker,
-            base_retriever=ensemble
-        )      
-        logging.info("✅ Quarterly Financial reranker created successfully")
-        return finance_quarterly_reranker     
-    except Exception as e:
-        logging.error(f"Error creating quarterly financial reranker: {str(e)}")
-        return None
-
 
 def create_general_reranker():
     """Create reranker for Employee Handbook (General)."""
@@ -141,11 +120,15 @@ def create_marketing_reranker():
     """Create reranker for Marketing Report."""
     try:
         logging.info("Creating Marketing reranker...")
-        vector_db = VectorDB(str(base_path / "marketing" / "market_report_q4_2024.md"), "mark_db")
-        vector_retriever = vector_db.load_existing_db().as_retriever(search_kwargs={"k": no_k})
-        keyword_retriever = keyword_manager.get_retriever("marketing_keyword")
+        vector_db1 = VectorDB(str(base_path / "marketing" / "market_report_q4_2024.md"), "mark_db")
+        vector_db2 = VectorDB(str(base_path / "marketing" / "marketing_report_2024.md"), "mark2_db")
+        vector_retriever = vector_db1.load_existing_db().as_retriever(search_kwargs={"k": no_k})
+        vector_retriever1 = vector_db2.load_existing_db().as_retriever(search_kwargs={"k": no_k})
+        keyword_retriever2 = keyword_manager.get_retriever("marketing_keyword")
+        lotr = MergerRetriever(retrievers=[vector_retriever1, vector_retriever2])
+
         ensemble = EnsembleRetriever(
-            retrievers=[vector_retriever, keyword_retriever],
+            retrievers=[lotr, keyword_retriever],
             weights=[vector_weight, keyword_weight]
         )
         marketing_reranker = ContextualCompressionRetriever(

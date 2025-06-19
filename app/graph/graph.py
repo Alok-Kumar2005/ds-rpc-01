@@ -3,6 +3,8 @@ from nodes import route_node, EngineeringNode, FinanceNode, MarketingNode, HRNod
 from langgraph.graph import END, START, StateGraph
 from edges import select_workflow
 
+
+
 def create_workflow():
     graph_builder = StateGraph(AgentState)
 
@@ -31,11 +33,10 @@ graph = create_workflow().compile()
 
 # Test state
 test_state = {
-    "user_question": "What is Quarterly Expense Breakdown in finance",
+    "user_question": "What is microservices in Engineering",
     "voice": "",
     "post": "",
-    "response": "",
-    "audio_buffer": b""
+    "response": ""
 }
 
 print(graph.invoke(test_state))

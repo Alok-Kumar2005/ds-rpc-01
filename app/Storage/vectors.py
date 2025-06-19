@@ -54,7 +54,25 @@ class VectorDatabaseManager:
                 "file_path": self.base_path / "marketing" / "market_report_q4_2024.md",
                 "db_name": "mark_db",
                 "type": "markdown"
+            },
+            {
+                "name": "Marketing Report",
+                "file_path": self.base_path / "marketing" / "marketing_report_2024.md",
+                "db_name": "mark2_db",
+                "type": "markdown"
             }
+            # {
+            #     "name": "Marketing Report",
+            #     "file_path": self.base_path / "marketing" / "market_report_q4_2024.md",
+            #     "db_name": "mark_db",
+            #     "type": "markdown"
+            # },
+            # {
+            #     "name": "Marketing Report",
+            #     "file_path": self.base_path / "marketing" / "market_report_q4_2024.md",
+            #     "db_name": "mark_db",
+            #     "type": "markdown"
+            # }
         ]
     
     def create_single_database(self, config):

@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from model import Router
 from state import AgentState
-from utils.prompt import router_template
+from utils.prompt import router_template, engineering_prompt, finance_prompt, general_prompt, hr_prompt, marketing_prompt
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -35,6 +35,7 @@ def route_node(state: AgentState)-> AgentState:
 def EngineeringNode(state: AgentState)->AgentState:
     try:
         logging.info("Enter Engineering Node")
+        prompt = PromptTemplate.from_template(engineering_prompt)
         engineering_reranker = create_engineering_reranker()
         if engineering_reranker is None:
             raise CustomException("Failed to create engineering reranker", sys)
