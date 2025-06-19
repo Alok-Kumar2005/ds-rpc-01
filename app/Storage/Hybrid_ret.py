@@ -10,7 +10,7 @@ from app.llm_config import no_k, vector_weight, keyword_weight
 from langchain_community.retrievers import BM25Retriever
 from langchain.retrievers import EnsembleRetriever
 from langchain.retrievers.document_compressors import CohereRerank
-from langchain.retrievers import ContextualCompressionRetriever
+from langchain.retrievers import ContextualCompressionRetriever, MergerRetriever
 from app.logger import logging
 
 base_path = Path("resources/data")
@@ -50,11 +50,14 @@ def create_finance_summary_reranker():
     """Create reranker for Finance Summary."""
     try:
         logging.info("Creating Finance Summary reranker...")
-        vector_db = VectorDB(str(base_path / "finance" / "financial_summary.md"), "fin_db1")
-        vector_retriever = vector_db.load_existing_db().as_retriever(search_kwargs={"k": no_k})
+        vector_db1 = VectorDB(str(base_path / "finance" / "financial_summary.md"), "fin_db1")
+        vector_db2 = VectorDB(str(base_path / "finance" / "quarterly_financial_report.md"), "fin_db2")
+        vector_retriever1 = vector_db1.load_existing_db().as_retriever(search_kwargs={"k": no_k})
+        vector_retriever2 = vector_db2.load_existing_db().as_retriever(search_kwargs={"k": no_k})
+        lotr = MergerRetriever(retrievers=[vector_retriever1, vector_retriever2])
         keyword_retriever = keyword_manager.get_retriever("fin_summary_keyword")
         ensemble = EnsembleRetriever(
-            retrievers=[vector_retriever, keyword_retriever],
+            retrievers=[lotr, keyword_retriever],
             weights=[vector_weight, keyword_weight]
         )
         finance_summary_reranker = ContextualCompressionRetriever(

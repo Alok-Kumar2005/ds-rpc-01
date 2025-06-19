@@ -31,7 +31,7 @@ graph = create_workflow().compile()
 
 # Test state
 test_state = {
-    "user_question": "What is Marketing Overview",
+    "user_question": "What is Quarterly Expense Breakdown in finance",
     "voice": "",
     "post": "",
     "response": "",

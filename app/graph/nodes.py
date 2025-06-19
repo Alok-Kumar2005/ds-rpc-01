@@ -13,7 +13,7 @@ from langchain.chains import RetrievalQA
 from app.llm_config import gemini_model 
 from app.logger import logging
 from app.exception import CustomException
-from app.Storage.Hybrid_ret import create_general_reranker,create_engineering_reranker,create_finance_quarterly_reranker,create_finance_summary_reranker,create_hr_reranker,create_marketing_reranker
+from app.Storage.Hybrid_ret import create_general_reranker,create_engineering_reranker,create_finance_summary_reranker,create_hr_reranker,create_marketing_reranker
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -56,7 +56,7 @@ def EngineeringNode(state: AgentState)->AgentState:
 def FinanceNode(state: AgentState)->AgentState:
     try:
         logging.info("Enter Finance Node")
-        finance_reranker = create_finance_quarterly_reranker()
+        finance_reranker = create_finance_summary_reranker()
         if finance_reranker is None:
             raise CustomException("Failed to create Finance reranker", sys)
         
@@ -136,3 +136,4 @@ def MarketingNode(state: AgentState)->AgentState:
     except CustomException as e:
         logging.error(f"Error in Engineering Node : {str(e)}")
         raise CustomException(e, sys) from e
+    
