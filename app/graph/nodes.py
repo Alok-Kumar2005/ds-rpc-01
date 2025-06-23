@@ -137,3 +137,8 @@ def MarketingNode(state: AgentState)->AgentState:
         logging.error(f"Error in Engineering Node : {str(e)}")
         raise CustomException(e, sys) from e
     
+def VoiceNode(state: AgentState)->AgentState:
+    audio_response = state.get("response", "")
+    return {
+        "audio": audio_response
+    }

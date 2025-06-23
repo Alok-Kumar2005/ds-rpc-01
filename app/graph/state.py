@@ -5,3 +5,4 @@ class AgentState(TypedDict):
     voice: str
     post: str
     response: str
+    audio: bytes

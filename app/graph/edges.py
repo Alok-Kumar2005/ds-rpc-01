@@ -1,4 +1,4 @@
-
+from langgraph.graph import END
 from graph.state import AgentState
 from typing import Literal
 
@@ -22,3 +22,38 @@ def select_workflow(state: AgentState) -> Literal[
         return "HRNode" 
     
 
+def eng_conditional_edge(state: AgentState):
+    workflow = state["voice"]
+    if workflow == "NO":
+        return END
+    else:
+        return "VoiceNode"
+    
+def fin_conditional_edge(state: AgentState):
+    workflow = state["voice"]
+    if workflow == "No":
+        return END
+    else:
+        return "VoiceNode"
+    
+def mar_conditional_edge(state: AgentState):
+    workflow = state["voice"]
+    if workflow == "NO":
+        return END
+    else:
+        return "VoiceNode"
+    
+def gen_conditional_edge(state: AgentState):
+    workflow = state["voice"]
+    if workflow == "NO":
+        return END
+    else:
+        return "VoiceNode"
+    
+
+def hr_conditional_edge(state: AgentState):
+    workflow = state["voice"]
+    if workflow == "NO":
+        return END
+    else:
+        return "VoiceNode"
