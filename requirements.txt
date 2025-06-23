@@ -15,3 +15,5 @@ cohere
 fastapi
 uvicorn
 streamlit
+assemblyai
+audio-recorder-streamlit
