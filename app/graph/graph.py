@@ -22,10 +22,10 @@ def create_workflow():
     graph_builder.add_edge(START, "route_node")
     graph_builder.add_conditional_edges("route_node", select_workflow)
     graph_builder.add_conditional_edges("EngineeringNode", eng_conditional_edge)
-    graph_builder.add_conditional_edges("FinanceNode", eng_conditional_edge)
-    graph_builder.add_conditional_edges("MarketingNode", eng_conditional_edge)
-    graph_builder.add_conditional_edges("HRNode", eng_conditional_edge)
-    graph_builder.add_conditional_edges("GeneralNode", eng_conditional_edge)
+    graph_builder.add_conditional_edges("FinanceNode", fin_conditional_edge) 
+    graph_builder.add_conditional_edges("MarketingNode", mar_conditional_edge) 
+    graph_builder.add_conditional_edges("HRNode", hr_conditional_edge) 
+    graph_builder.add_conditional_edges("GeneralNode", gen_conditional_edge) 
     
     # Add END edges after each workflow node
     graph_builder.add_edge("VoiceNode", END)

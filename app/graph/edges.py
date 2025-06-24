@@ -21,10 +21,9 @@ def select_workflow(state: AgentState) -> Literal[
     else:
         return "HRNode" 
     
-
 def eng_conditional_edge(state: AgentState):
     workflow = state["voice"]
-    if workflow == "NO":
+    if workflow == "No": 
         return END
     else:
         return "VoiceNode"
@@ -38,22 +37,21 @@ def fin_conditional_edge(state: AgentState):
     
 def mar_conditional_edge(state: AgentState):
     workflow = state["voice"]
-    if workflow == "NO":
+    if workflow == "No": 
         return END
     else:
         return "VoiceNode"
     
 def gen_conditional_edge(state: AgentState):
     workflow = state["voice"]
-    if workflow == "NO":
+    if workflow == "No": 
         return END
     else:
         return "VoiceNode"
     
-
 def hr_conditional_edge(state: AgentState):
     workflow = state["voice"]
-    if workflow == "NO":
+    if workflow == "No":  
         return END
     else:
         return "VoiceNode"

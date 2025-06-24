@@ -17,3 +17,5 @@ uvicorn
 streamlit
 assemblyai
 audio-recorder-streamlit
+cartesia
+soundfile

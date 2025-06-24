@@ -17,11 +17,18 @@ async def ask_question(request: QuestionRequest):
         "user_question": request.user_question,
         "voice": "",
         "post": "",
-        "response": ""
+        "response": "",
+        "audio": b""
     }
     
     result = Graph.invoke(state)
-    return {"response": result.get("response", "")}
+    
+    response_data = {
+        "response": result.get("response", ""),
+        "audio": result.get("audio", "")  
+    }
+    
+    return response_data
 
 if __name__ == "__main__":
     import uvicorn
