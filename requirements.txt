@@ -19,3 +19,4 @@ assemblyai
 audio-recorder-streamlit
 cartesia
 soundfile
+matplotlib

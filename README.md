@@ -26,6 +26,10 @@ python app\Storage\vectors.py         ( create vector database for vector retrie
 python app\Storage\keyword_ret.py     ( create vector database for keyword retrieval )
 ```
 
+## Before executing the program 
+- make a .env file and add all the important key
+- api key's example are present in .env_example
+
 
 ## Run backend and frontend
 ```
@@ -35,10 +39,13 @@ streamlit run frontend.py   ( run frontend )
 
 # Images
 ### Backend image
-<img src="images/backend.png" alt="My Image" width="600"/>
+<img src="images/backend.png" alt="Backend Image Image" width="600"/>
 
 ### Frontend login
-<img src="images/frontend_login.png" alt="My Image" width="600"/>
+<img src="images/frontend_login.png" alt="Frontend login Image" width="600"/>
 
 ### Frontend 
-<img src="images/frontend.png" alt="My Image" width="600"/>
+<img src="images/frontend.png" alt="frontend Image" width="600"/>
+
+### Workflow 
+<img src="workflow.png" alt="Workflow Image" width="800"/>

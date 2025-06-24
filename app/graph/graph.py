@@ -1,4 +1,3 @@
-
 from graph.state import AgentState
 from graph.nodes import route_node, EngineeringNode, FinanceNode, MarketingNode, HRNode, GeneralNode, VoiceNode
 from langgraph.graph import END, START, StateGraph
@@ -34,6 +33,8 @@ def create_workflow():
     return graph_builder
 
 Graph = create_workflow().compile()
+
+# print(Graph)
 
 # Test state
 # test_state = {

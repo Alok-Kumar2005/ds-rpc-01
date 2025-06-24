@@ -162,7 +162,6 @@ def VoiceNode(state: AgentState) -> AgentState:
             logging.error("Cartesia client not initialized")
             return {"audio": ""}
         
-        # Use a default voice ID or make it configurable
         # voice_id = os.getenv('CARTESIA_VOICE_ID')
         voice_id = "ef8390dc-0fc0-473b-bbc0-7277503793f7"
         
@@ -197,8 +196,8 @@ def VoiceNode(state: AgentState) -> AgentState:
         # Create WAV file in memory
         wav_buffer = io.BytesIO()
         with wave.open(wav_buffer, 'wb') as wav_file:
-            wav_file.setnchannels(1)  # Mono
-            wav_file.setsampwidth(4)  # 32-bit float = 4 bytes
+            wav_file.setnchannels(1) 
+            wav_file.setsampwidth(4)  
             wav_file.setframerate(16000)
             wav_file.writeframes(audio_data)
         
