@@ -48,4 +48,4 @@ streamlit run frontend.py   ( run frontend )
 <img src="images/frontend.png" alt="frontend Image" width="600"/>
 
 ### Workflow with Long Term Memory
-<img src="workflow.png" alt="Workflow Image" width="800"/>
+<img src="images/workflow.png" alt="Workflow Image" width="800"/>
