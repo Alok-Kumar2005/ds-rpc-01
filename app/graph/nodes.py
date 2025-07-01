@@ -14,6 +14,7 @@ from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain.chains import RetrievalQA
 from app.llm_config import gemini_model 
+from app.memory.longterm_memory import longterm_memory
 from app.logger import logging
 from app.exception import CustomException
 from app.Storage.Hybrid_ret import create_general_reranker,create_engineering_reranker,create_finance_summary_reranker,create_hr_reranker,create_marketing_reranker
@@ -28,6 +29,7 @@ def route_node(state: AgentState)-> AgentState:
     prompt = PromptTemplate.from_template(router_template)
     chain = prompt | structured_llm
     result = chain.invoke({"question": state['user_question']})
+    print(result)
     return {
         "post": result.post,
         "voice": result.voice
@@ -214,3 +216,38 @@ def VoiceNode(state: AgentState) -> AgentState:
     except Exception as e:
         logging.error(f"Error in Voice Node: {str(e)}")
         return {"audio": ""}
+    
+
+def MemoryNode(state: AgentState) -> AgentState:
+    """Store conversation in long-term memory and retrieve relevant context"""
+    try:
+        logging.info("Enter Memory Node")
+        
+        user_email = state.get("user_email", "")
+        question = state.get("user_question", "")
+        response = state.get("response", "")
+        category = state.get("post", "general")
+        
+        if user_email and question and response:
+            # Store current conversation in long-term memory
+            conversation_id = longterm_memory.store_conversation(
+                user_email=user_email,
+                question=question,
+                response=response,
+                category=category
+            )
+            
+            # Get recent conversation history for context (optional)
+            recent_history = longterm_memory.get_user_history(user_email, limit=5)
+            
+            logging.info(f"Stored conversation {conversation_id} for user {user_email}")
+            
+            return {
+                "conversation_history": recent_history
+            }
+        
+        return {}
+        
+    except Exception as e:
+        logging.error(f"Error in Memory Node: {str(e)}")
+        return {}

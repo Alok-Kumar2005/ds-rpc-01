@@ -33,7 +33,7 @@ python app\Storage\keyword_ret.py     ( create vector database for keyword retri
 
 ## Run backend and frontend
 ```
-python main.py              ( run backend )
+python app/main.py          ( run backend )
 streamlit run frontend.py   ( run frontend )
 ```
 
@@ -47,5 +47,5 @@ streamlit run frontend.py   ( run frontend )
 ### Frontend 
 <img src="images/frontend.png" alt="frontend Image" width="600"/>
 
-### Workflow 
+### Workflow with Long Term Memory
 <img src="workflow.png" alt="Workflow Image" width="800"/>

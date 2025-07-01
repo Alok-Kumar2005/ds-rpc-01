@@ -21,3 +21,6 @@ hr_db_csv/
 logs/
 mark_db/
 mark2_db/
+retrievers/
+hr_db/
+chroma_db/

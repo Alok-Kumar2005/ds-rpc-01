@@ -20,3 +20,6 @@ audio-recorder-streamlit
 cartesia
 soundfile
 matplotlib
+langgraph-checkpoint-sqlite
+langchain-chroma
+langchain-cohere
